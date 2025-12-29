@@ -1,5 +1,5 @@
 <div align="center">
-  <img src=https://capsule-render.vercel.app/api?type="waving&height=300&color=05D0A4&text=NITHEESH%20R&section=header&fontColor=black&textBg=false&reversal=false&desc=𝐂𝐫𝐞𝐚𝐭𝐢𝐨𝐧%20𝐧𝐞𝐞𝐝𝐬%20𝐢𝐦𝐚𝐠𝐢𝐧𝐚𝐭𝐢𝐨𝐧..!!!&descAlignY=64&descAlign=50"
+  <img src=banner.svg type="waving&height=300&color=05D0A4&text=NITHEESH%20R&section=header&fontColor=black&textBg=false&reversal=false&desc=𝐂𝐫𝐞𝐚𝐭𝐢𝐨𝐧%20𝐧𝐞𝐞𝐝𝐬%20𝐢𝐦𝐚𝐠𝐢𝐧𝐚𝐭𝐢𝐨𝐧..!!!&descAlignY=64&descAlign=50"
   <h1 align="center"></h1>
 </div>
 
