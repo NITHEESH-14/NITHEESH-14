@@ -83,9 +83,8 @@
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" width="48" height="48" alt="Git" />
       <br/>Git
     </td>
-    <td align="center" width="98">
+    <td align="center" valign="middle" width="98">
       <img src="assests/three_dots.svg" width="48" height="48" alt="More" />
-      <br/>&nbsp;
     </td>
   </tr>
 </table>
