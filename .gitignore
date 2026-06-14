@@ -1,0 +1,7 @@
+scratch/
+temp_resume/
+__pycache__/
+*.pyc
+.venv/
+venv/
+~$*.docx

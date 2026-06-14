@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assests/banner3.svg" width="100%" />
+  <img src="assests/images/banner3.svg" width="100%" />
   <h1 align="center"></h1>
 </div>
 
@@ -84,7 +84,7 @@
       <br/>Git
     </td>
     <td align="center" valign="middle" width="98">
-      <img src="assests/three_dots.svg" width="48" height="48" alt="More" />
+      <img src="assests/images/three_dots.svg" width="48" height="48" alt="More" />
     </td>
   </tr>
 </table>
@@ -170,41 +170,12 @@
 </table>
 
 
-<h2 align="left">~ GitHub Stats</h2>
+## ~ Live Stats Dashboard
 
-<table align="center">
-  <tr>
-    <td align="center" width="50%">
-      <picture>
-        <source srcset="https://github-readme-stats.vercel.app/api?username=NITHEESH-14&rank_icon=github&theme=dracula&text_bold=false&hide_border=true&bg_color=00000000&show_icons=true&hide=issues,contribs&count_private=true&include_all_commits=true" media="(prefers-color-scheme: dark)" />
-        <source srcset="https://github-readme-stats.vercel.app/api?username=NITHEESH-14&rank_icon=github&theme=buefy&show_icons=true&hide_border=true&text_bold=false&hide=issues,contribs&count_private=true&include_all_commits=true&bg_color=00000000" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" />
-        <img src="https://github-readme-stats.vercel.app/api?username=NITHEESH-14&rank_icon=github&theme=dracula&show_icons=true&hide_border=true&text_bold=false&hide=issues,contribs&count_private=true&include_all_commits=true&bg_color=00000000" alt="Stats" />
-      </picture>
-    </td>
-    <td align="center" width="50%">
-      <picture>
-        <source srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=NITHEESH-14&layout=compact&theme=dracula&text_bold=false&hide_border=true&bg_color=00000000" media="(prefers-color-scheme: dark)" />
-        <source srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=NITHEESH-14&layout=compact&theme=buefy&text_bold=false&hide_border=true&bg_color=00000000" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" />
-        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=NITHEESH-14&layout=compact&theme=dracula&text_bold=false&hide_border=true&bg_color=00000000" alt="Top Langs" />
-      </picture>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2" align="center">
-      <picture>
-        <source srcset="https://github-readme-streak-stats-eight.vercel.app?user=NITHEESH-14&date_format=j%20M%5B%20Y%5D&theme=dracula&border_radius=0&background=FFFFFF00&hide_border=true" media="(prefers-color-scheme: dark)" />
-        <source srcset="https://github-readme-streak-stats-eight.vercel.app?user=NITHEESH-14&date_format=j%20M%5B%20Y%5D&theme=buefy&border_radius=0&background=FFFFFF00&hide_border=true" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" />
-        <img src="https://github-readme-streak-stats-eight.vercel.app/?user=NITHEESH-14&date_format=j%20M%5B%20Y%5D&theme=dracula&border_radius=0&background=FFFFFF00&hide_border=true" alt="Contributions" />
-      </picture>
-    </td>
-  </tr>
-</table>
+<div align="center">
+  <img src="assests/images/stats_banner_with_counter.svg" width="100%" />
+</div>
 
-## ~Profile Views
-
-<p align="center">
-  <img src="https://count.getloli.com/@ZennitS?name=ZennitS&theme=booru-lewd&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=auto" alt="Visitor Counter" width="430" />
-</p>
 
 ## ~Connect with me
 
@@ -218,8 +189,3 @@
     </td>
   </tr>
 </table>
-
-##
-![Crazy GIF](assests/gifs/225813708-98b745f2-7d22-48cf-9150-083f1b00d6c9.gif)
-
-
