@@ -170,10 +170,11 @@
 </table>
 
 
-## ~ Live Stats Dashboard
+## ~ Stats Dashboard
 
 <div align="center">
   <img src="assests/images/stats_banner_with_counter.svg" width="100%" />
+  <img src="https://komarev.com/ghpvc/?username=NITHEESH-14&style=flat-square&color=blue&label=Profile+Views" alt="github" width="0" height="0" />
 </div>
 
 

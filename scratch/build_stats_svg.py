@@ -2,6 +2,7 @@ import urllib.request
 import re
 import base64
 import os
+from datetime import datetime, timezone
 
 def fetch_content(url, headers=None):
     if headers is None:
@@ -70,19 +71,55 @@ def main():
     output_path_standard = r"c:\Users\R Nitheesh\Desktop\NITHEESH-14\assests\images\stats_banner.svg"
     output_path_counter = r"c:\Users\R Nitheesh\Desktop\NITHEESH-14\assests\images\stats_banner_with_counter.svg"
 
+    # Generate current UTC timestamp
+    last_updated_time = datetime.now(timezone.utc).strftime("%b %d, %Y %I:%M %p UTC")
+
     # 1. Fetch Main Stats SVG
-    url_stats = f"https://github-readme-stats.vercel.app/api?username={username}&rank_icon=github&theme=dracula&text_bold=false&hide_border=true&bg_color=00000000&show_icons=true&hide=issues&count_private=true&include_all_commits=true"
+    url_stats = f"https://github-readme-stats.vercel.app/api?username={username}&rank_icon=github&theme=dracula&text_bold=false&hide_border=true&bg_color=00000000&show_icons=true&hide=issues&count_private=true"
     stats_svg = fetch_content(url_stats)
 
     # 2. Fetch Streak Stats SVG
     url_streak = f"https://github-readme-streak-stats-eight.vercel.app/?user={username}&theme=dracula&border_radius=0&background=FFFFFF00&hide_border=true"
     streak_svg = fetch_content(url_streak)
 
-    # 3. Live Profile Counter URL (embedded as live image to update counter on every view)
-    url_counter = f"https://count.getloli.com/@ZennitS?name=ZennitS&theme=booru-lewd&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=auto"
+    # 3. Fetch view count from the external Komarev Badge (the live counter in README)
+    url_badge = f"https://komarev.com/ghpvc/?username={username}"
+    badge_svg = fetch_content(url_badge)
+    v_count = 0
+    if badge_svg:
+        match = re.findall(r'<text[^>]*>([0-9,]+)</text>', badge_svg)
+        if match:
+            v_count = int(match[-1].replace(',', ''))
+    print(f"Syncing views: Komarev badge count = {v_count}")
 
-    if not stats_svg or not streak_svg:
-        print("Error: Could not fetch stats or streak SVGs from the APIs.")
+    # 4. Fetch Base Profile Counter SVG from count.getloli.com to calculate database offset
+    url_counter_base = f"https://count.getloli.com/@ZennitS?name=ZennitS&theme=booru-lewd&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=auto"
+    counter_headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36',
+        'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Referer': f'https://github.com/{username}/{username}'
+    }
+    counter_base_svg = fetch_content(url_counter_base, headers=counter_headers)
+    
+    # Parse current count from getloli SVG
+    c_count = 0
+    if counter_base_svg:
+        digits = re.findall(r'xlink:href="#([0-9])"', counter_base_svg)
+        if digits:
+            c_count = int(''.join(digits))
+    print(f"Getloli base count = {c_count}")
+
+    # Calculate offset so getloli matches the Komarev views count
+    offset = max(0, v_count - c_count - 1)
+    print(f"Calculated offset = {offset}")
+
+    # Query getloli with calculated offset to get the final synced SVG digits
+    url_counter_synced = f"https://count.getloli.com/@ZennitS?name=ZennitS&theme=booru-lewd&padding=7&offset={offset}&align=top&scale=1&pixelated=1&darkmode=auto"
+    counter_svg = fetch_content(url_counter_synced, headers=counter_headers)
+
+    if not stats_svg or not streak_svg or not counter_svg:
+        print("Error: Could not fetch stats, streak, or counter SVGs from the APIs.")
         return
 
     # Base64 Encode Profile Views PNG
@@ -116,9 +153,25 @@ def main():
     stats_svg = stats_svg.replace("fill: #f8f8f2;", "fill: #f8f8f2; stroke: #000000; stroke-width: 3px; paint-order: stroke fill; stroke-linejoin: round;")
     stats_svg = stats_svg.replace("fill: #ff6e96;", "fill: #ff6e96; stroke: #000000; stroke-width: 3.5px; paint-order: stroke fill; stroke-linejoin: round;")
 
+    # Force visibility by default (ensure opacity is 1 so text shows in static environments like GitHub READMEs)
+    stats_svg = stats_svg.replace("opacity: 0;", "opacity: 1;").replace("opacity:0;", "opacity:1;")
+    streak_svg = streak_svg.replace("opacity: 0;", "opacity: 1;").replace("opacity:0;", "opacity:1;")
+
+    # Scope the CSS inside the counter SVG to avoid bleeding and darkening the main banner
+    style_match = re.search(r'(<style[^>]*>)(.*?)(</style>)', counter_svg, re.DOTALL)
+    if style_match:
+        open_tag = style_match.group(1)
+        style_css = style_match.group(2)
+        close_tag = style_match.group(3)
+        scoped_css = re.sub(r'\bsvg\b', '.counter-svg', style_css)
+        counter_svg = counter_svg.replace(style_match.group(0), f"{open_tag}{scoped_css}{close_tag}")
+
     # Scale stats and streaks to 70%
     nested_stats = embed_svg(stats_svg, x=15, y=22, width=327, height=136.5, default_viewbox="0 0 467 195")
     nested_streak = embed_svg(streak_svg, x=492, y=streak_y + 2, width=346.5, height=136.5, default_viewbox="0 0 495 195")
+
+    # Embed Profile Counter (scaled to 90% size: 283.5 x 90, shifted up to y=307)
+    nested_counter = embed_svg(counter_svg, x=555, y=312, width=283.5, height=90, default_viewbox="0 0 315 100", custom_class="counter-svg")
 
     # Base64 Encode GIF
     if not os.path.exists(gif_path):
@@ -289,6 +342,12 @@ def main():
     <!-- 2. Dark Overlay Gradient only on the top portion of the GIF -->
     <rect width="854" height="200" fill="url(#overlayGrad)" />
 
+    <!-- Last Updated Timestamp & Custom Pixelated Lightning Bolt (Placed before the word "Last" and aligned to the right edge) -->
+    <g transform="translate(595, 20)">
+      <path d="M 3 0 H 9 V 3 H 12 V 6 H 9 V 21 H 6 V 18 H 3 V 15 H 6 V 12 H 0 V 9 H 3 V 6 H 6 V 3 H 3 Z" fill="#f1fa8c" stroke="#000000" stroke-width="1.5" stroke-linejoin="round" opacity="0.8" />
+      <text x="20" y="15" text-anchor="start" fill="#f8f8f2" stroke="#000000" stroke-width="2.5" paint-order="stroke fill" stroke-linejoin="round" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="600" opacity="0.8">Last Updated: {last_updated_time}</text>
+    </g>
+
     <!-- 3. Left Card (Actual Github Stats) -->
     <g filter="url(#glassShadow)">
       <!-- Outer dark blue border + glass background -->
@@ -318,7 +377,7 @@ def main():
 </svg>"""
 
     # Generate Duplicate SVG Content (With Counter)
-    svg_counter = f"""<svg width="854" height="480" viewBox="0 0 854 480" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    svg_counter = f"""<svg width="854" height="480" viewBox="0 0 854 480" fill="none" xmlns="http://www.w3.org/2000/svg">
 {defs_and_styles}
   <g clip-path="url(#bannerClip)">
     <!-- 1. Background GIF -->
@@ -326,6 +385,12 @@ def main():
     
     <!-- 2. Dark Overlay Gradient only on the top portion of the GIF -->
     <rect width="854" height="200" fill="url(#overlayGrad)" />
+
+    <!-- Last Updated Timestamp & Custom Pixelated Lightning Bolt (Placed before the word "Last" and aligned to the right edge) -->
+    <g transform="translate(595, 20)">
+      <path d="M 3 0 H 9 V 3 H 12 V 6 H 9 V 21 H 6 V 18 H 3 V 15 H 6 V 12 H 0 V 9 H 3 V 6 H 6 V 3 H 3 Z" fill="#f1fa8c" stroke="#000000" stroke-width="1.5" stroke-linejoin="round" opacity="0.8" />
+      <text x="20" y="15" text-anchor="start" fill="#f8f8f2" stroke="#000000" stroke-width="2.5" paint-order="stroke fill" stroke-linejoin="round" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="600" opacity="0.8">Last Updated: {last_updated_time}</text>
+    </g>
 
     <!-- 3. Left Card (Actual Github Stats) -->
     <g filter="url(#glassShadow)">
@@ -355,8 +420,8 @@ def main():
 
     <!-- Profile Views Image (Start-aligned with 2nd character of counter, y=293) -->
     <image href="data:image/png;base64,{encoded_profileviews}" x="591.8" y="274.5" width="150" style="image-rendering: pixelated;" />
-    <!-- 5. Profile Visitor Counter (Live image link to update counter on every profile view) -->
-    <image href="{url_counter}" x="555" y="312" width="283.5" height="90" />
+    <!-- 5. Profile Visitor Counter (Transparent overlay in bottom-right corner) -->
+    {nested_counter}
   </g>
 </svg>"""
 
