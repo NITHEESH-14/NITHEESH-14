@@ -337,7 +337,7 @@ def main():
 {defs_and_styles}
   <g clip-path="url(#bannerClip)">
     <!-- 1. Background GIF -->
-    <image href="data:image/gif;base64,{encoded_gif}" width="854" height="480" preserveAspectRatio="xMidYMid slice" />
+    <image href="https://raw.githubusercontent.com/NITHEESH-14/NITHEESH-14/main/assests/gifs/225813708-98b745f2-7d22-48cf-9150-083f1b00d6c9.gif" width="854" height="480" preserveAspectRatio="xMidYMid slice" />
     
     <!-- 2. Dark Overlay Gradient only on the top portion of the GIF -->
     <rect width="854" height="200" fill="url(#overlayGrad)" />
@@ -381,7 +381,7 @@ def main():
 {defs_and_styles}
   <g clip-path="url(#bannerClip)">
     <!-- 1. Background GIF -->
-    <image href="data:image/gif;base64,{encoded_gif}" width="854" height="480" preserveAspectRatio="xMidYMid slice" />
+    <image href="https://raw.githubusercontent.com/NITHEESH-14/NITHEESH-14/main/assests/gifs/225813708-98b745f2-7d22-48cf-9150-083f1b00d6c9.gif" width="854" height="480" preserveAspectRatio="xMidYMid slice" />
     
     <!-- 2. Dark Overlay Gradient only on the top portion of the GIF -->
     <rect width="854" height="200" fill="url(#overlayGrad)" />
@@ -419,7 +419,7 @@ def main():
     {nested_streak}
 
     <!-- Profile Views Image (Start-aligned with 2nd character of counter, y=293) -->
-    <image href="data:image/png;base64,{encoded_profileviews}" x="591.8" y="274.5" width="150" style="image-rendering: pixelated;" />
+    <image href="https://raw.githubusercontent.com/NITHEESH-14/NITHEESH-14/main/assests/images/Profileviews.png" x="591.8" y="274.5" width="150" style="image-rendering: pixelated;" />
     <!-- 5. Profile Visitor Counter (Transparent overlay in bottom-right corner) -->
     {nested_counter}
   </g>
