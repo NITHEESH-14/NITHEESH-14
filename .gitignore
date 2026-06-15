@@ -1,4 +1,6 @@
-scratch/
+scratch/*
+!scratch/build_stats_svg.py
+!scratch/encode_logo.py
 temp_resume/
 __pycache__/
 *.pyc

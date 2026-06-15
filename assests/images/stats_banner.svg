@@ -6,10 +6,10 @@
     </clipPath>
     <!-- Clipping paths for diagonal glare sweeps on cards (using pixelated boundaries) -->
     <clipPath id="leftCardClip">
-      <path d="M 30 26 H 327 H 330 V 29 H 333 V 32 H 336 V 35 V 149 V 152 H 333 V 155 H 330 V 158 H 327 H 30 H 27 V 155 H 24 V 152 H 21 V 149 V 35 V 32 H 24 V 29 H 27 V 26 H 30 Z" />
+      <path d="M 30 26 H 327 H 330 V 29 H 333 V 32 H 336 V 35 V 149 V 152 H 333 V 155 H 330 V 158 H 30 H 30 H 27 V 155 H 24 V 152 H 21 V 149 V 35 V 32 H 24 V 29 H 27 V 26 H 30 Z" />
     </clipPath>
     <clipPath id="rightCardClip">
-      <path d="M 507 71 H 824 H 827 V 74 H 830 V 77 H 833 V 80 V 194 V 197 H 830 V 200 H 827 V 203 H 824 H 507 H 504 V 200 H 501 V 197 H 498 V 194 V 80 V 77 H 501 V 74 H 504 V 71 H 507 Z" />
+      <path d="M 507 71 H 824 H 827 V 74 H 830 V 77 H 833 V 80 V 194 V 197 H 830 V 200 H 827 V 203 H 507 H 507 H 504 V 200 H 501 V 197 H 498 V 194 V 80 V 77 H 501 V 74 H 504 V 71 H 507 Z" />
     </clipPath>
     <!-- Soft Vertical Gradient Overlay for stats readability -->
     <linearGradient id="overlayGrad" x1="0" y1="0" x2="0" y2="1">
@@ -158,17 +158,17 @@
     <!-- 3. Left Card (Actual Github Stats) -->
     <g filter="url(#glassShadow)">
       <!-- Outer dark blue border + glass background -->
-      <path d="M 24 20 H 333 H 336 V 23 H 339 V 26 H 342 V 29 V 155 V 158 H 339 V 161 H 336 V 164 H 333 H 24 H 21 V 161 H 18 V 158 H 15 V 155 V 29 V 26 H 18 V 23 H 21 V 20 H 24 Z" class="glass-card-left" />
+      <path d="M 24 20 H 333 H 336 V 23 H 339 V 26 H 342 V 29 V 155 V 158 H 339 V 161 H 336 V 164 H 24 H 24 H 21 V 161 H 18 V 158 H 15 V 155 V 29 V 26 H 18 V 23 H 21 V 20 H 24 Z" class="glass-card-left" />
       <!-- Solid black bezel/frame inside -->
-      <path d="M 24 20 H 333 H 336 V 23 H 339 V 26 H 342 V 29 V 155 V 158 H 339 V 161 H 336 V 164 H 333 H 24 H 21 V 161 H 18 V 158 H 15 V 155 V 29 V 26 H 18 V 23 H 21 V 20 H 24 Z M 30 26 H 327 H 330 V 29 H 333 V 32 H 336 V 35 V 149 V 152 H 333 V 155 H 330 V 158 H 327 H 30 H 27 V 155 H 24 V 152 H 21 V 149 V 35 V 32 H 24 V 29 H 27 V 26 H 30 Z" fill="#000000" fill-rule="evenodd" />
+      <path d="M 24 20 H 333 H 336 V 23 H 339 V 26 H 342 V 29 V 155 V 158 H 339 V 161 H 336 V 164 H 24 H 24 H 21 V 161 H 18 V 158 H 15 V 155 V 29 V 26 H 18 V 23 H 21 V 20 H 24 Z M 30 26 H 327 H 330 V 29 H 333 V 32 H 336 V 35 V 149 V 152 H 333 V 155 H 330 V 158 H 30 H 30 H 27 V 155 H 24 V 152 H 21 V 149 V 35 V 32 H 24 V 29 H 27 V 26 H 30 Z" fill="#000000" fill-rule="evenodd" />
       <!-- Inner pixelated highlight -->
-      <path d="M 24 20 H 333 H 336 V 23 H 339 V 26 H 342 V 29 V 155 V 158 H 339 V 161 H 336 V 164 H 333 H 24 H 21 V 161 H 18 V 158 H 15 V 155 V 29 V 26 H 18 V 23 H 21 V 20 H 24 Z" fill="none" stroke="url(#pixelHighlightStats)" stroke-width="1.5" stroke-linejoin="miter" />
+      <path d="M 24 20 H 333 H 336 V 23 H 339 V 26 H 342 V 29 V 155 V 158 H 339 V 161 H 336 V 164 H 24 H 24 H 21 V 161 H 18 V 158 H 15 V 155 V 29 V 26 H 18 V 23 H 21 V 20 H 24 Z" fill="none" stroke="url(#pixelHighlightStats)" stroke-width="1.5" stroke-linejoin="miter" />
       <!-- Glare sweep -->
       <path d="M15 20 L130 20 L70 164 L15 164 Z" fill="url(#glareGradLeft)" clip-path="url(#leftCardClip)" />
     </g>
     <svg x="15" y="22" width="327" height="136.5" viewBox="0 0 467 170" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <title id="titleId">NITHEESH R's GitHub Stats, Rank: C</title>
-        <desc id="descId">Total Stars Earned: 1, Total Commits  : 65, Total PRs: 0, Contributed to (last year): 1</desc>
+        <desc id="descId">Total Stars Earned: 1, Total Commits  : 67, Total PRs: 0, Contributed to (last year): 1</desc>
         <style>
           .header {
             font: 600 20px 'Segoe UI', Ubuntu, Sans-Serif;
@@ -232,7 +232,7 @@
         stroke-dashoffset: 251.32741228718345;
       }
       to {
-        stroke-dashoffset: 238.64269796486627;
+        stroke-dashoffset: 238.58722567150238;
       }
     }
   
@@ -336,7 +336,7 @@
         x="219.01"
         y="12.5"
         data-testid="commits"
-      >65</text>
+      >67</text>
     </g>
   </g><g transform="translate(0, 50)">
     <g class="stagger" style="animation-delay: 750ms" transform="translate(25, 0)">
@@ -378,11 +378,11 @@
     <!-- 4. Right Card (Actual Streak Stats) -->
     <g filter="url(#glassShadow)">
       <!-- Outer dark blue border + glass background -->
-      <path d="M 501 65 H 830 H 833 V 68 H 836 V 71 H 839 V 74 V 200 V 203 H 836 V 206 H 833 V 209 H 830 H 501 H 498 V 206 H 495 V 203 H 492 V 200 V 74 V 71 H 495 V 68 H 498 V 65 H 501 Z" class="glass-card-right" />
+      <path d="M 501 65 H 830 H 833 V 68 H 836 V 71 H 839 V 74 V 200 V 203 H 836 V 206 H 833 V 209 H 501 H 501 H 498 V 206 H 495 V 203 H 492 V 200 V 74 V 71 H 495 V 68 H 498 V 65 H 501 Z" class="glass-card-right" />
       <!-- Solid black bezel/frame inside -->
-      <path d="M 501 65 H 830 H 833 V 68 H 836 V 71 H 839 V 74 V 200 V 203 H 836 V 206 H 833 V 209 H 830 H 501 H 498 V 206 H 495 V 203 H 492 V 200 V 74 V 71 H 495 V 68 H 498 V 65 H 501 Z M 507 71 H 824 H 827 V 74 H 830 V 77 H 833 V 80 V 194 V 197 H 830 V 200 H 827 V 203 H 824 H 507 H 504 V 200 H 501 V 197 H 498 V 194 V 80 V 77 H 501 V 74 H 504 V 71 H 507 Z" fill="#000000" fill-rule="evenodd" />
+      <path d="M 501 65 H 830 H 833 V 68 H 836 V 71 H 839 V 74 V 200 V 203 H 836 V 206 H 833 V 209 H 501 H 501 H 498 V 206 H 495 V 203 H 492 V 200 V 74 V 71 H 495 V 68 H 498 V 65 H 501 Z M 507 71 H 824 H 827 V 74 H 830 V 77 H 833 V 80 V 194 V 197 H 830 V 200 H 827 V 203 H 507 H 507 H 504 V 200 H 501 V 197 H 498 V 194 V 80 V 77 H 501 V 74 H 504 V 71 H 507 Z" fill="#000000" fill-rule="evenodd" />
       <!-- Inner pixelated highlight -->
-      <path d="M 501 65 H 830 H 833 V 68 H 836 V 71 H 839 V 74 V 200 V 203 H 836 V 206 H 833 V 209 H 830 H 501 H 498 V 206 H 495 V 203 H 492 V 200 V 74 V 71 H 495 V 68 H 498 V 65 H 501 Z" fill="none" stroke="url(#pixelHighlightStreak)" stroke-width="1.5" stroke-linejoin="miter" />
+      <path d="M 501 65 H 830 H 833 V 68 H 836 V 71 H 839 V 74 V 200 V 203 H 836 V 206 H 833 V 209 H 501 H 501 H 498 V 206 H 495 V 203 H 492 V 200 V 74 V 71 H 495 V 68 H 498 V 65 H 501 Z" fill="none" stroke="url(#pixelHighlightStreak)" stroke-width="1.5" stroke-linejoin="miter" />
       <!-- Glare sweep -->
       <path d="M839 65 L724 65 L784 209 L839 209 Z" fill="url(#glareGradRight)" clip-path="url(#rightCardClip)" />
     </g>
@@ -420,7 +420,7 @@
                 <!-- Total Contributions big number -->
                 <g transform='translate(82.5, 48)'>
                     <text x='0' y='32' stroke-width='3.5px' paint-order='stroke fill' stroke-linejoin='round' text-anchor='middle' fill='#FF6E96' stroke='#000000' font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='700' font-size='34px' font-style='normal' style='opacity: 0; animation: fadein 0.5s linear forwards 0.6s'>
-                        172
+                        174
                     </text>
                 </g>
 
@@ -434,7 +434,7 @@
                 <!-- Total Contributions range -->
                 <g transform='translate(82.5, 114)'>
                     <text x='0' y='32' stroke-width='3.5px' paint-order='stroke fill' stroke-linejoin='round' text-anchor='middle' fill='#F8F8F2' stroke='#000000' font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='400' font-size='13.5px' font-style='normal' style='opacity: 0; animation: fadein 0.5s linear forwards 0.8s'>
-                        Dec 9, 2024 - Present
+                        Dec 8, 2024 - Present
                     </text>
                 </g>
             </g>
