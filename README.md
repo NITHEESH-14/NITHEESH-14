@@ -1,6 +1,7 @@
 <div align="center">
   <img src="assests/images/banner3.svg" width="100%" />
   <h1 align="center"></h1>
+  <img src="assests/images/dark_mode_badge.svg" alt="Dark Mode Recommended" />
 </div>
 
 
