@@ -31,6 +31,10 @@
       <br/>JavaScript
     </td>
     <td align="center" width="98">
+      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" width="48" height="48" alt="TypeScript" />
+      <br/>TypeScript
+    </td>
+    <td align="center" width="98">
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" width="48" height="48" alt="React" />
       <br/>React
     </td>
@@ -50,12 +54,12 @@
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" width="48" height="48" alt="Python" />
       <br/>Python
     </td>
+  </tr>
+  <tr>
     <td align="center" width="98">
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" width="48" height="48" alt="Java" />
       <br/>Java
     </td>
-  </tr>
-  <tr>
     <td align="center" width="98">
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg" width="48" height="48" alt="MongoDB" />
       <br/>MongoDB
@@ -77,10 +81,6 @@
       <br/>Nginx
     </td>
     <td align="center" width="98">
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/graphql/graphql-plain.svg" width="48" height="48" alt="GraphQL" />
-      <br/>GraphQL
-    </td>
-    <td align="center" width="98">
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" width="48" height="48" alt="Git" />
       <br/>Git
     </td>
@@ -96,10 +96,10 @@
   <tr>
     <td valign="top">
       <ul>
-        <li><b>Backend & System Design:</b> REST APIs, Microservices Architecture, API Gateway, Service Decomposition</li>
-        <li><b>Data & AI:</b> Qdrant, Memo, Model Context Protocol (MCP)</li>
-        <li><b>Core CS:</b> Data Structures & Algorithms, OOP, Machine Learning, System Design, <a href="https://leetcode.com/u/_NITHEESH/">LeetCode</a></li>
-        <li><b>Resume:</b> <a href="./NITS.RESUME.docx">Download My Resume</a></li>
+        <li><b>Backend & System Design:</b> Node.js, REST APIs, Microservices Architecture, Nginx, API Gateway, Service Decomposition, SDLC</li>
+        <li><b>Data & AI:</b> Qdrant, Mem0, Model Context Protocol (MCP), GraphQL, OpenCV, LLaVA</li>
+        <li><b>Core CS & DSA:</b> Data Structures & Algorithms, OOP, Machine Learning, System Design, <a href="https://leetcode.com/u/_NITHEESH/">LeetCode (500+ Problems Solved)</a></li>
+        <li><b>Links & Resume:</b> <a href="https://nitheeshr.vercel.app/">Portfolio Website</a> | <a href="./NITS.RESUME.docx">Download Resume (.docx)</a></li>
       </ul>
     </td>
     <td valign="middle">
@@ -188,7 +188,7 @@
       <img src="assests/gifs/238200838-76036311-c8ea-4247-8bf8-a7077623036c.gif" width="30" />
     </td>
     <td valign="middle">
-      <a href="https://www.linkedin.com/in/nitheeshcse/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-blue?style=social&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiBmaWxsPSIjMEE2NkMyIj48cGF0aCBkPSJNMy45IDEyYzAtMS43MSAxLjM5LTMuMSAzLjEtMy4xaDRWN0g3Yy0yLjc2IDAtNSAyLjI0LTUgNXMyLjI0IDUgNSA1aDR2LTEuOUg3Yy0xLjcxIDAtMy4xLTEuMzktMy4xLTMuMXpNOCAxM2g4di0ySDh2MnptOS02aC00djEuOWg0YzEuNzEgMCAzLjEgMS4zOSAzLjEgMy4xcy0xLjM5IDMuMS0zLjEgMy4xaC00VjE3aDRjMi43NiAwIDUtMi4yNCA1LTVzLTIuMjQtNS01LTV6Ii8%2BPC9zdmc+" alt="LinkedIn" /></a>&nbsp;&nbsp;<a href="mailto:nitheesh20066@gmail.com"><img src="https://img.shields.io/badge/Email-red?style=social&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiBmaWxsPSIjRDE0ODM2Ij48cGF0aCBkPSJNMy45IDEyYzAtMS43MSAxLjM5LTMuMSAzLjEtMy4xaDRWN0g3Yy0yLjc2IDAtNSAyLjI0LTUgNXMyLjI0IDUgNSA1aDR2LTEuOUg3Yy0xLjcxIDAtMy4xLTEuMzktMy4xLTMuMXpNOCAxM2g4di0ySDh2MnptOS02aC00djEuOWg0YzEuNzEgMCAzLjEgMS4zOSAzLjEgMy4xcy0xLjM5IDMuMS0zLjEgMy4xaC00VjE3aDRjMi43NiAwIDUtMi4yNCA1LTVzLTIuMjQtNS01LTV6Ii8%2BPC9zdmc%2B" alt="Email" /></a>
+      <a href="https://www.linkedin.com/in/nitheeshcse/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-blue?style=social&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiBmaWxsPSIjMEE2NkMyIj48cGF0aCBkPSJNMy45IDEyYzAtMS43MSAxLjM5LTMuMSAzLjEtMy4xaDRWN0g3Yy0yLjc2IDAtNSAyLjI0LTUgNXMyLjI0IDUgNSA1aDR2LTEuOUg3Yy0xLjcxIDAtMy4xLTEuMzktMy4xLTMuMXpNOCAxM2g4di0ySDh2MnptOS02aC00djEuOWg0YzEuNzEgMCAzLjEgMS4zOSAzLjEgMy4xaC00VjE3aDRjMi43NiAwIDUtMi4yNCA1LTVzLTIuMjQtNS01LTV6Ii8%2BPC9zdmc+" alt="LinkedIn" /></a>&nbsp;&nbsp;<a href="mailto:nitheesh20066@gmail.com"><img src="https://img.shields.io/badge/Email-red?style=social&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiBmaWxsPSIjRDE0ODM2Ij48cGF0aCBkPSJNMy45IDEyYzAtMS43MSAxLjM5LTMuMSAzLjEtMy4xaDRWN0g3Yy0yLjc2IDAtNSAyLjI0LTUgNXMyLjI0IDUgNSA1aDR2LTEuOUg3Yy0xLjcxIDAtMy4xLTEuMzktMy4xLTMuMXpNOCAxM2g4di0ySDh2MnptOS02aC00djEuOWg0YzEuNzEgMCAzLjEgMS4zOSAzLjEgMy4xaC00VjE3aDRjMi43NiAwIDUtMi4yNCA1LTVzLTIuMjQtNS01LTV6Ii8%2BPC9zdmc%2B" alt="Email" /></a>
     </td>
   </tr>
 </table>
