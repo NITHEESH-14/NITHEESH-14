@@ -661,9 +661,9 @@ def generate_heatmap_svg(username, repo_root, encoded_font_regular="", encoded_f
 <style>{font_css}
   text.lbl {{ fill:#7d8590; font-size:9px; font-weight:normal; font-family:'Minecraft', -apple-system, sans-serif !important; }}
   text.total {{ fill:#e6edf3; font-size:10px; font-weight:normal; font-family:'Minecraft', -apple-system, sans-serif !important; }}
-  .c {{ transform-box:fill-box; transform-origin:center; opacity:1; }}
-  .g {{ transform-box:fill-box; transform-origin:center; animation:shine 5s ease-in-out infinite; }}
-  @keyframes shine {{ 0% {{ filter:brightness(1); transform:scale(1); }} 12% {{ filter:brightness(2.4); transform:scale(1.15); }} 28% {{ filter:brightness(1); transform:scale(1); }} 100% {{ filter:brightness(1); transform:scale(1); }} }}
+  .c {{ opacity:1; }}
+  .g {{ animation:shine-flow 4s ease-in-out infinite; }}
+  @keyframes shine-flow {{ 0% {{ filter:brightness(1); }} 15% {{ filter:brightness(2.6); }} 30% {{ filter:brightness(1); }} 100% {{ filter:brightness(1); }} }}
   @media (prefers-reduced-motion: reduce) {{ .g {{ animation:none !important; }} }}
 </style>
 <rect width="{width}" height="164" fill="none"/>
