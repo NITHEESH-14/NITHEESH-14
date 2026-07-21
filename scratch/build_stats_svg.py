@@ -661,10 +661,11 @@ def generate_heatmap_svg(username, repo_root, encoded_font_regular="", encoded_f
 <style>{font_css}
   text.lbl {{ fill:#7d8590; font-size:9px; font-weight:normal; font-family:'Minecraft', -apple-system, sans-serif !important; }}
   text.total {{ fill:#e6edf3; font-size:10px; font-weight:normal; font-family:'Minecraft', -apple-system, sans-serif !important; }}
-  .c {{ opacity:1; }}
-  .g {{ animation:shine-flow 4s ease-in-out infinite; }}
+  .c {{ transform-box:fill-box; transform-origin:center; opacity:0; animation:pop 0.6s ease-out both; }}
+  .g {{ transform-box:fill-box; transform-origin:center; opacity:0; animation:pop 0.6s ease-out both, shine-flow 4s ease-in-out infinite; }}
+  @keyframes pop {{ 0% {{ opacity:0; transform:scale(0.2); }} 60% {{ opacity:1; transform:scale(1.1); }} 100% {{ opacity:1; transform:scale(1); }} }}
   @keyframes shine-flow {{ 0% {{ filter:brightness(1); }} 15% {{ filter:brightness(2.6); }} 30% {{ filter:brightness(1); }} 100% {{ filter:brightness(1); }} }}
-  @media (prefers-reduced-motion: reduce) {{ .g {{ animation:none !important; }} }}
+  @media (prefers-reduced-motion: reduce) {{ .c, .g {{ opacity:1 !important; transform:none !important; animation:none !important; }} }}
 </style>
 <rect width="{width}" height="164" fill="none"/>
 {month_html}<text class="lbl" x="2" y="51">Mon</text><text class="lbl" x="2" y="83">Wed</text><text class="lbl" x="2" y="115">Fri</text>
