@@ -534,5 +534,149 @@ def main():
     if private_count is not None:
         update_readme_private_repos(private_count, repo_root)
 
+    # Generate animated contribution heatmap SVG for the user
+    generate_heatmap_svg(username, repo_root, encoded_font_regular, encoded_font_bold)
+
+PALETTE_HEATMAP = {
+    "0": "#161b22",
+    "1": "#0e4429",
+    "2": "#006d32",
+    "3": "#26a641",
+    "4": "#39d353"
+}
+
+def fetch_contributions(username="theZennitS"):
+    url = f"https://github.com/users/{username}/contributions"
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+    req = urllib.request.Request(url, headers=headers)
+    try:
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            html = resp.read().decode('utf-8')
+    except Exception as e:
+        print(f"Error fetching contributions HTML for {username}: {e}")
+        return None, None
+    
+    m_total = re.search(r'([\d,]+)\s+contributions\s+in the last year', html)
+    total_text = f"{m_total.group(1)} contributions in the last year" if m_total else "Contributions in the last year"
+
+    td_matches = re.findall(r'<td\s+[^>]*class="[^"]*ContributionCalendar-day[^"]*"[^>]*>', html)
+    
+    days = []
+    for td in td_matches:
+        date_m = re.search(r'data-date="([^"]+)"', td)
+        level_m = re.search(r'data-level="([^"]+)"', td)
+        if date_m and level_m:
+            days.append({
+                "date": date_m.group(1),
+                "level": level_m.group(1)
+            })
+            
+    days.sort(key=lambda d: d["date"])
+    return days, total_text
+
+def build_heatmap_grid(days):
+    if not days:
+        return []
+    
+    first_date = datetime.fromisoformat(days[0]["date"]).date()
+    lead_pad = (first_date.weekday() + 1) % 7
+    
+    grid = []
+    col = [None] * lead_pad
+    
+    for d in days:
+        date_obj = datetime.fromisoformat(d["date"]).date()
+        w = (date_obj.weekday() + 1) % 7
+        while len(col) < w:
+            col.append(None)
+        col.append(d)
+        if len(col) == 7:
+            grid.append(col)
+            col = []
+    if col:
+        while len(col) < 7:
+            col.append(None)
+        grid.append(col)
+        
+    return grid
+
+def generate_heatmap_svg(username, repo_root, encoded_font_regular="", encoded_font_bold=""):
+    days, total_text = fetch_contributions(username)
+    if not days:
+        print("Skipping heatmap generation (could not fetch contribution days).")
+        return
+    grid = build_heatmap_grid(days)
+    
+    month_labels = []
+    seen_months = set()
+    
+    for col_idx, col in enumerate(grid):
+        for cell in col:
+            if cell is not None:
+                d_obj = datetime.fromisoformat(cell["date"]).date()
+                m_key = (d_obj.year, d_obj.month)
+                if m_key not in seen_months and d_obj.day <= 7:
+                    seen_months.add(m_key)
+                    x_pos = 34 + col_idx * 16
+                    month_labels.append((x_pos, d_obj.strftime("%b")))
+                break
+
+    month_html = "".join(f'<text class="lbl" x="{x}" y="16">{m}</text>' for x, m in month_labels)
+    
+    rect_elements = []
+    for col_idx, col in enumerate(grid):
+        x = 34 + col_idx * 16
+        for row_idx, cell in enumerate(col):
+            if cell is None:
+                continue
+            y = 24 + row_idx * 16
+            level = cell["level"]
+            color = PALETTE_HEATMAP.get(level, "#161b22")
+            cls = "c e" if level == "0" else "c g"
+            delay = round(col_idx * 0.065 + row_idx * 0.0357, 3)
+            rect_elements.append(
+                f'<rect class="{cls}" x="{x}" y="{y}" width="13" height="13" rx="2.5" fill="{color}" style="animation-delay:{delay}s"/>'
+            )
+            
+    rects_html = "".join(rect_elements)
+    width = max(888, 34 + len(grid) * 16 + 20)
+    
+    font_css = ""
+    if encoded_font_regular or encoded_font_bold:
+        font_css = f"""
+    @font-face {{
+      font-family: 'Minecraft';
+      src: url('data:font/opentype;charset=utf-8;base64,{encoded_font_regular}') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }}
+    @font-face {{
+      font-family: 'Minecraft';
+      src: url('data:font/opentype;charset=utf-8;base64,{encoded_font_bold}') format('opentype');
+      font-weight: bold;
+      font-style: normal;
+    }}"""
+
+    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="164" viewBox="0 0 {width} 164" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
+<style>{font_css}
+  text.lbl {{ fill:#7d8590; font-size:13px; font-weight:600; font-family:'Minecraft', -apple-system, sans-serif !important; transform-box: fill-box; transform-origin: center; transform: scaleY(1.25); }}
+  text.total {{ fill:#e6edf3; font-size:16px; font-weight:bold; font-family:'Minecraft', -apple-system, sans-serif !important; transform-box: fill-box; transform-origin: left bottom; transform: scaleY(1.35); }}
+  .c {{ transform-box:fill-box; transform-origin:center; opacity:0; animation:pop 0.55s ease-out both; }}
+  .g {{ animation:pop 0.55s ease-out both, flash 0.7000000000000001s ease-out both; }}
+  @keyframes pop {{ 0%{{opacity:0;transform:scale(.2)}} 60%{{opacity:1;transform:scale(1.1)}} 100%{{opacity:1;transform:scale(1)}} }}
+  @keyframes flash {{ 0%{{filter:brightness(2.4)}} 45%{{filter:brightness(2.4)}} 100%{{filter:brightness(1)}} }}
+  @media (prefers-reduced-motion: reduce) {{ .c {{ opacity:1 !important; animation:none !important; }} }}
+</style>
+<rect width="{width}" height="164" fill="none"/>
+{month_html}<text class="lbl" x="2" y="51">Mon</text><text class="lbl" x="2" y="83">Wed</text><text class="lbl" x="2" y="115">Fri</text>
+{rects_html}
+<text class="total" x="34" y="154">{total_text}</text>
+</svg>"""
+
+    output_file = os.path.join(repo_root, "assests", "images", "contrib_heatmap.svg")
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write(svg)
+    print(f"Successfully generated contribution heatmap SVG for {username} to {output_file}!")
+
 if __name__ == "__main__":
     main()

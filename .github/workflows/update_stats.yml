@@ -38,7 +38,7 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assests/images/stats_banner.svg assests/images/stats_banner_with_counter.svg README.md
+          git add assests/images/stats_banner.svg assests/images/stats_banner_with_counter.svg assests/images/contrib_heatmap.svg README.md
           # Only commit and push if there are changes
           if ! git diff --cached --quiet; then
             git commit -m "chore: automatically update profile stats and README"
